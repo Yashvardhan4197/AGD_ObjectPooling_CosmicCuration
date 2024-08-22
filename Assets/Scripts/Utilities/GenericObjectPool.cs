@@ -22,6 +22,12 @@ namespace Assets.Scripts.Utilities
             return CreatePooledItem();
         }
 
+        public void ReturnToPool(T returnItem)
+        {
+            PooledItem<T> pooledItem=pooledItems.Find(item => item.Item.Equals(returnItem));
+            pooledItem.isUsed=false;
+        }
+
         private T CreatePooledItem()
         {
             PooledItem<T> newItem = new PooledItem<T>();
