@@ -13,6 +13,26 @@ public class BulletPool : MonoBehaviour
         this.bulletView = bulletView;  
         this.bulletScriptableObject= bulletScriptableObject;
     }
+
+    public BulletController GetBullet()
+    {
+        PooledBullet pooledBullet = pooledBullets.Find(item => !item.isUsed);
+        if(pooledBullet != null)
+        {
+            pooledBullet.isUsed = true;
+            return pooledBullet.bulletController;
+        }
+        return CreateBulletController();
+    }
+
+    private BulletController CreateBulletController()
+    {
+        PooledBullet pooledBullet=new PooledBullet();
+        pooledBullet.bulletController=new BulletController(bulletView,bulletScriptableObject);
+        pooledBullet.isUsed=true;
+        return pooledBullet.bulletController;
+    }
+
    public class PooledBullet
     {
         public BulletController bulletController;
