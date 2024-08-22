@@ -29,7 +29,7 @@ namespace CosmicCuration.Enemy
         {
             enemyView.transform.position = positionToSet;
             SetEnemyOrientation(enemyOrientation);
-            
+            enemyView.gameObject.SetActive(true);
             currentEnemyState = EnemyState.Moving;
             currentHealth = enemyData.maxHealth;
             speed = Random.Range(enemyData.minimumSpeed, enemyData.maximumSpeed);
@@ -106,7 +106,9 @@ namespace CosmicCuration.Enemy
             GameService.Instance.GetUIService().IncrementScore(enemyData.scoreToGrant);
             GameService.Instance.GetSoundService().PlaySoundEffects(SoundType.EnemyDeath);
             GameService.Instance.GetVFXService().PlayVFXAtPosition(VFXType.EnemyExplosion, enemyView.transform.position);
-            Object.Destroy(enemyView.gameObject);
+            GameService.Instance.GetEnemyService().ReturnEnemyToPool(this);
+            enemyView.gameObject.SetActive(false);
+            //Object.Destroy(enemyView.gameObject);
         }
 
         private enum EnemyState
