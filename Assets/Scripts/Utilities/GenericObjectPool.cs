@@ -4,7 +4,7 @@ using System;
 
 namespace Assets.Scripts.Utilities
 {
-    internal class GenericObjectPool<T> where T : class
+    public class GenericObjectPool<T> where T : class
     {
         private List<PooledItem<T>> pooledItems = new List<PooledItem<T>>();
         
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Utilities
             return CreatePooledItem();
         }
 
-        public void ReturnToPool(T returnItem)
+        public void ReturnItem(T returnItem)
         {
             PooledItem<T> pooledItem=pooledItems.Find(item => item.Item.Equals(returnItem));
             pooledItem.isUsed=false;
