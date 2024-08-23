@@ -18,7 +18,9 @@ namespace CosmicCuration.VFX
         private void Update()
         {
             if (vfx != null && vfx.isStopped)
-                    Destroy(gameObject);
+            {
+               controller.StopVFX();
+            }
         }
     }
 }

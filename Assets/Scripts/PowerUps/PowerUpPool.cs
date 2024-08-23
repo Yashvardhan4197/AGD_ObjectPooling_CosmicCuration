@@ -12,7 +12,7 @@ namespace CosmicCuration.PowerUps
             return GetItem<T>();
         }
 
-        public void ReturnToPool(PowerUpController powerUpController)=>ReturnItem(powerUpController);
+       
 
         protected override PowerUpController CreateItem<T>()
         {
