@@ -18,15 +18,19 @@ namespace CosmicCuration.VFX
             {
                 if(data.type == vFXType)
                 {
-                    vfx=data.particleSystem;
-                    vfx.gameObject.SetActive(true);
+                    data.particleSystem.gameObject.SetActive(true);
+                    vfx = data.particleSystem;
+                }
+                else
+                {
+                    data.particleSystem.gameObject.SetActive(false);
                 }
             }
         }
 
         private void Update()
         {
-            if (vfx != null && vfx.isStopped)
+            if (vfx != null && vfx.isStopped==true)
             {
                 vfx.gameObject.SetActive(false);
                 controller.StopVFX();
@@ -36,7 +40,7 @@ namespace CosmicCuration.VFX
         }
     }
     [Serializable]
-    public class VFXDatas
+    public struct VFXDatas
     {
         public VFXType type;
         public ParticleSystem particleSystem;
