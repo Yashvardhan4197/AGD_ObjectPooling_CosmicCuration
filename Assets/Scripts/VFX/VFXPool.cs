@@ -7,10 +7,13 @@ namespace Assets.Scripts.VFX
     {
         private VFXView vFXPrefab;
         
-
-        public VFXController GetVFX(VFXView vFXView)
+        public VFXPool(VFXView vFXView)
         {
             this.vFXPrefab = vFXView;
+        }
+
+        public VFXController GetVFX()
+        {
             return GetItem<VFXController>();
         }
 
