@@ -12,11 +12,10 @@ namespace CosmicCuration.VFX
         public void SetController(VFXController controllerToSet) => controller = controllerToSet;
         public void ConfigureAndPlay(VFXType vFXType,Vector2 positionToSet)
         {
-            this.gameObject.SetActive(true);
-            gameObject.transform.position = positionToSet;
             foreach(VFXDatas data in vfxData)
             {
-                if(data.type == vFXType)
+                this.gameObject.SetActive(true);
+                if (data.type == vFXType)
                 {
                     data.particleSystem.gameObject.SetActive(true);
                     vfx = data.particleSystem;
@@ -26,6 +25,7 @@ namespace CosmicCuration.VFX
                     data.particleSystem.gameObject.SetActive(false);
                 }
             }
+            vfx.gameObject.transform.position = positionToSet;
         }
 
         private void Update()
