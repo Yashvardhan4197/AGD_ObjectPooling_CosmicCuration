@@ -4936,7 +4936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3020414020874085863
 Transform:
   m_ObjectHideFlags: 0
@@ -9853,9 +9853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2590e3f5e792cb4fba863a1bf28940a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxData:
-  - type: 0
-    particleSystem: {fileID: 3109020216133020329}
+  vfxData: []
 --- !u!1 &3018327519134429667
 GameObject:
   m_ObjectHideFlags: 0

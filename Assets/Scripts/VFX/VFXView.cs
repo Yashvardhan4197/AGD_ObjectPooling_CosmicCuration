@@ -12,14 +12,14 @@ namespace CosmicCuration.VFX
         public void SetController(VFXController controllerToSet) => controller = controllerToSet;
         public void ConfigureAndPlay(VFXType vFXType,Vector2 positionToSet)
         {
-            transform.position = positionToSet;
-            vfx = GetComponent<ParticleSystem>();
+            this.gameObject.SetActive(true);
+            gameObject.transform.position = positionToSet;
             foreach(VFXDatas data in vfxData)
             {
                 if(data.type == vFXType)
                 {
-                    data.particleSystem.gameObject.SetActive(true);
                     vfx=data.particleSystem;
+                    vfx.gameObject.SetActive(true);
                 }
             }
         }
@@ -30,6 +30,8 @@ namespace CosmicCuration.VFX
             {
                 vfx.gameObject.SetActive(false);
                 controller.StopVFX();
+                vfx = null;
+                this.gameObject.SetActive(false);
             }
         }
     }

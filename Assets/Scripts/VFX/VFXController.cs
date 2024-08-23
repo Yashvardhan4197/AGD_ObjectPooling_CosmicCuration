@@ -14,7 +14,7 @@ namespace CosmicCuration.VFX
 
         public void Configure(VFXType type,Vector2 spawnPosition)
         {
-            vfxView.gameObject.SetActive(true);
+            
             vfxView.ConfigureAndPlay(type,spawnPosition);
         }
         public void StopVFX()
